@@ -2,8 +2,7 @@
 dalchymia for python
 ====================
 
-This is libraries for using dalchymia M2M platform service.
-
+This is library for dalchymia M2M platform service.
 Please sign in to http://dalchymia.net/ and get parameters to upload sensed data to dalchymia.
 
 Features
@@ -15,7 +14,7 @@ Features
 Dependencies
 ============
 
-This library has dependency with some existed python packages. Please install them before using dalchymia.
+This library has dependencies with some packages. Please install them as following command  before using dalchymia.
 
 .. code-block:: bash
 
@@ -47,6 +46,7 @@ Documentation is available at http://docs.dalchymia.net/.
 
 Prerequisites
 =============
+
 You need to following parameters before usinig dalchymia. Please contact to dalchymia support to get them.
 
 - user_id
