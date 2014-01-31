@@ -18,6 +18,7 @@ Dependencies
 This library has dependency with some existed python packages. Please install them before using dalchymia.
 
 .. code-block:: bash
+
 $ pip install requests
 $ pip install paho-mqtt
 
