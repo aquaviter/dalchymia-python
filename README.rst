@@ -17,10 +17,9 @@ Dependencies
 
 This library has dependency with some existed python packages. Please install them before using dalchymia.
 
-::
+.. code-block:: bash
 $ pip install requests
 $ pip install paho-mqtt
-::
 
 
 Installation
@@ -44,6 +43,15 @@ Documentation
 =============
 
 Documentation is available at http://docs.dalchymia.net/.
+
+Prerequisites
+=============
+You need to following parameters before usinig dalchymia. Please contact to dalchymia support to get them.
+
+- user_id
+- device_id
+- product_hash_key
+
 
 How to use?
 ===========
@@ -81,7 +89,7 @@ product_hash_key = "0e33b56487d0956d7f65412fecd3a43e91f0012b08c26070104fc6875d50
 ...
 
 Compose payload
-~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 
 Tere are 2 devices for data store.
 
@@ -101,9 +109,8 @@ data.appendrow(timestamp, data.data)
 
 #: get json format
 body = data.getjson()
-...
-.
-3.Store data
+
+Store data
 ~~~~~~~~~~~~
 
 MQTT
@@ -114,6 +121,7 @@ conn.connect()
 conn.publish(root_device_id, body)
 conn.disconnect()
 ...
+
 
 HTTP(RESTful)
 
