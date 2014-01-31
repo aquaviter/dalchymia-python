@@ -18,7 +18,7 @@ Dependencies
 This library has dependency with some existed python packages. Please install them before using dalchymia.
 
 | $ pip install requests
-| $ pip install mosquitto
+| $ pip install paho-mqtt
 
 
 Installation
