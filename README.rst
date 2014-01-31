@@ -74,18 +74,18 @@ And also, both clients use same JSON format as follows:
 Define parameters.
 ~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: python
 root_device_id = "7f0000000000002a96467812819b11e3"
 device_id = ["7f0000000000002a96467812819b11e3", "7f0000000000002a96474fda819b11e3"]
 product_hash_key = "0e33b56487d0956d7f65412fecd3a43e91f0012b08c26070104fc6875d5075bc"
-::
+...
 
 Compose payload
 ~~~~~~~~~~~~~~~~~~~
 
 Tere are 2 devices for data store.
 
-.. code-block:: pycon
+.. code-block:: python
 #: define instance
 data = storeformat()
 
@@ -108,7 +108,7 @@ body = data.getjson()
 
 MQTT
 
-.. code-block:: pycon
+.. code-block:: python
 conn = mqttclient()
 conn.connect()
 conn.publish(root_device_id, body)
@@ -117,7 +117,7 @@ conn.disconnect()
 
 HTTP(RESTful)
 
-.. code-block:: pycon
+.. code-block:: python
 conn = httpclient(product_hash_key, root_device_id)
 res =  conn.store(body)
 ...
