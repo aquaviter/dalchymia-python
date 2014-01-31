@@ -22,6 +22,8 @@ This library has dependency with some existed python packages. Please install th
 $ pip install requests
 $ pip install paho-mqtt
 
+...
+
 
 Installation
 ============
