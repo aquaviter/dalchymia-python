@@ -19,8 +19,8 @@ This library has dependency with some existed python packages. Please install th
 
 .. code-block:: bash
 
-$ pip install requests
-$ pip install paho-mqtt
+    $ pip install requests
+    $ pip install paho-mqtt
 
 ...
 
