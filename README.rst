@@ -29,15 +29,15 @@ Installation
 dalchymia has already registered on PyPi.
 To install dalchymia, simply:
 
-::
-$ pip install dalchymia
-::
+.. code-block:: bash
+
+    $ pip install dalchymia
 
 Or
 
-::
-$ easy_install dalchymia
-::
+.. code-block:: bash
+
+    $ easy_install dalchymia
 
 
 Documentation
@@ -61,7 +61,7 @@ Please use RESTful API in HTTP as long as your application doesn't need to store
 
 And also, both clients use same JSON format as follows:
 
-::
+.. code-block:: javascript
 [
   "t" : "1390199481.371757",
   "d" : [
@@ -69,8 +69,7 @@ And also, both clients use same JSON format as follows:
     { "id" : "7f0000000000002a96474fda819b11e3", "v" : "80.0" }
   ]
 ]
-::
-  
+...  
 
 Define parameters.
 ~~~~~~~~~~~~~~~~~~~
@@ -86,7 +85,7 @@ Compose payload
 
 Tere are 2 devices for data store.
 
-::
+.. code-block:: pycon
 #: define instance
 data = storeformat()
 
@@ -102,26 +101,25 @@ data.appendrow(timestamp, data.data)
 
 #: get json format
 body = data.getjson()
-::
-
+...
+.
 3.Store data
 ~~~~~~~~~~~~
 
 MQTT
 
-::
+.. code-block:: pycon
 conn = mqttclient()
 conn.connect()
 conn.publish(root_device_id, body)
 conn.disconnect()
-::
+...
 
 HTTP(RESTful)
 
-::
+.. code-block:: pycon
 conn = httpclient(product_hash_key, root_device_id)
 res =  conn.store(body)
-::
-
+...
 
 
