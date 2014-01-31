@@ -22,8 +22,6 @@ This library has dependency with some existed python packages. Please install th
     $ pip install requests
     $ pip install paho-mqtt
 
-...
-
 
 Installation
 ============
@@ -73,23 +71,24 @@ Please use RESTful API in HTTP as long as your application doesn't need to store
 And also, both clients use same JSON format as follows:
 
 .. code-block:: javascript
-[
-  "t" : "1390199481.371757",
-  "d" : [
-    { "id" : "7f0000000000002a96467812819b11e3", "v" : "23.9" },
-    { "id" : "7f0000000000002a96474fda819b11e3", "v" : "80.0" }
-  ]
-]
-...  
 
+    [
+      "t" : "1390199481.371757",
+      "d" : [
+        { "id" : "7f0000000000002a96467812819b11e3", "v" : "23.9" },
+        { "id" : "7f0000000000002a96474fda819b11e3", "v" : "80.0" }
+      ]
+    ]
+
+    
 Define parameters.
 ~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
-root_device_id = "7f0000000000002a96467812819b11e3"
-device_id = ["7f0000000000002a96467812819b11e3", "7f0000000000002a96474fda819b11e3"]
-product_hash_key = "0e33b56487d0956d7f65412fecd3a43e91f0012b08c26070104fc6875d5075bc"
-...
+
+    root_device_id = "7f0000000000002a96467812819b11e3"
+    device_id = ["7f0000000000002a96467812819b11e3", "7f0000000000002a96474fda819b11e3"]
+    product_hash_key = "0e33b56487d0956d7f65412fecd3a43e91f0012b08c26070104fc6875d5075bc"
 
 Compose payload
 ~~~~~~~~~~~~~~~
@@ -97,21 +96,22 @@ Compose payload
 Tere are 2 devices for data store.
 
 .. code-block:: python
-#: define instance
-data = storeformat()
 
-#: get timestamp, values
-timestamp = str(time.mktime(datetime.datetime.now().timetuple()))
-v_data1 = str(random.randint(1,100))
-v_data2 = str(random.randint(1000,2000))
+    #: define instance
+    data = storeformat()
 
-#: append values to 
-data.appendvalue(device_id[0], v_data1)
-data.appendvalue(device_id[1], v_data2)
-data.appendrow(timestamp, data.data)
+    #: get timestamp, values
+    timestamp = str(time.mktime(datetime.datetime.now().timetuple()))
+    v_data1 = str(random.randint(1,100))
+    v_data2 = str(random.randint(1000,2000))
 
-#: get json format
-body = data.getjson()
+    #: append values to 
+    data.appendvalue(device_id[0], v_data1)
+    data.appendvalue(device_id[1], v_data2)
+    data.appendrow(timestamp, data.data)
+
+    #: get json format
+    body = data.getjson()
 
 Store data
 ~~~~~~~~~~~~
@@ -119,18 +119,17 @@ Store data
 MQTT
 
 .. code-block:: python
-conn = mqttclient()
-conn.connect()
-conn.publish(root_device_id, body)
-conn.disconnect()
-...
 
+    conn = mqttclient()
+    conn.connect()
+    conn.publish(root_device_id, body)
+    conn.disconnect()
 
 HTTP(RESTful)
 
 .. code-block:: python
-conn = httpclient(product_hash_key, root_device_id)
-res =  conn.store(body)
-...
+
+    conn = httpclient(product_hash_key, root_device_id)
+    res =  conn.store(body)
 
 
