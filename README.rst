@@ -93,7 +93,7 @@ Define parameters.
 Compose payload
 ~~~~~~~~~~~~~~~
 
-Tere are 2 devices for data store.
+Tere are 2 devices for data store. Timestamp should be epoch, and each timestamp has multiple values. Payload should be JSON format as described before.
 
 .. code-block:: python
 
@@ -109,9 +109,7 @@ Tere are 2 devices for data store.
     data.appendvalue(device_id[0], v_data1)
     data.appendvalue(device_id[1], v_data2)
     data.appendrow(timestamp, data.data)
-
-    #: get json format
-    body = data.getjson()
+    payload = data.getjson()
 
 Store data
 ~~~~~~~~~~~~
@@ -120,9 +118,9 @@ MQTT
 
 .. code-block:: python
 
-    conn = mqttclient()
+    conn = mqttclient(root_device_id)
     conn.connect()
-    conn.publish(root_device_id, body)
+    conn.publish(payload)
     conn.disconnect()
 
 HTTP(RESTful)
@@ -130,6 +128,6 @@ HTTP(RESTful)
 .. code-block:: python
 
     conn = httpclient(product_hash_key, root_device_id)
-    res =  conn.store(body)
+    res =  conn.store(payload)
 
 
