@@ -26,12 +26,14 @@ api_base = 'https://api.dalchymia.net/api/v2'
 
 class mqttclient:
     
-    def __init__(self):
+    def __init__(self, root_device_id):
         self.server = "mq.dalchymia.net"
         self.port = 1883
         self.keepalive = 60
         self.basetopic = 'api/v2/store'
-        self.client = paho.Client('mqtt_client')
+        self.root_device_id = root_device_id
+        self.topic = self.basetopic + "/" + self.root_device_id
+        self.client = paho.Client(self.root_device_id)
 
         def on_connect(mosq, obj, rc):
             print("rc: " + str(rc))
@@ -53,10 +55,9 @@ class mqttclient:
     def connect(self):
         self.client.connect(self.server, self.port, self.keepalive)
 
-    def publish(self, root_device_id, payload):
+    def publish(self, payload):
         #print "Publish %s : %s" % (topic, payload)
-        topic = self.basetopic + "/" + root_device_id
-        self.client.publish(topic, payload, retain=False, qos=0)
+        self.client.publish(self.topic, payload, retain=False, qos=0)
             
     def disconnect(self):
         self.client.disconnect()
